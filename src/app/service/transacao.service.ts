@@ -10,28 +10,7 @@ import { Transacao } from '../Model/Transacao.model';
 export class TransacaoService extends BaseService {
 
   constructor(http: HttpClient) {
-    super(http, '/produto')
-  }
-
-  ObterTodos() {
-    return this.http.get<Transacao[]>(this.apiControllerUrl)
-      .pipe(
-        delay(2000)
-      );
-  }
-
-  ObterPorId(id: number) {
-    return this.http.get<Transacao>(`${this.apiControllerUrl}/${id}`).pipe(take(1));
-  }
-
-  //Atualizar
-  Atualizar(transacao: Transacao) {
-    this.http.put(this.apiControllerUrl, transacao);
-  }
-
-  //Delete
-  Delete(id: number) {
-    return this.http.delete(`${this.apiControllerUrl}/${id}`).pipe(take(1));
+    super(http, '/')
   }
 
   Depositar(transacao: Transacao) {
@@ -44,7 +23,7 @@ export class TransacaoService extends BaseService {
   }
 
   Saldo(){
-    return this.http.get<Transacao>(this.apiControllerUrl);
+   return this.http.get<number>(this.apiControllerUrl);
   }
 
 }

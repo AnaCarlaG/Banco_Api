@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TransacaoService } from 'src/app/service/transacao.service';
 import { HttpClient } from '@angular/common/http';
-import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 
 @Component({
   selector: 'app-deposito',
@@ -23,13 +22,22 @@ export class DepositoComponent implements OnInit {
       deposito: [null]
     })
   }
-  // First, you need to create the `numberMask` with your desired configurations
-  public numberMask = createNumberMask({
-    prefix: '',
-    suffix: ' R$',
-    allowDecimal: true
-    // This will put the dollar sign at the end, with a space.
-  })
+  public mascaraCodigo = [/[0-9]/, /\d/, /\d/, /\d/, /\d/];
+
+  mascaraCod(num: string) {
+    if (num.length == 0)
+      return [""];
+    if (num.length == 1)
+      return [/[0-9]/, ""];
+    if (num.length == 2)
+      return [/[0-9]/, /\d/, ""]
+    if (num.length == 3)
+      return [/[0-9]/, /\d/, /\d/, ""]
+    if (num.length == 4)
+      return [/[0-9]/, /\d/, /\d/, /\d/, ""]
+    if (num.length == 5)
+      return [/[0-9]/, /\d/, /\d/, /\d/, /\d/];
+  }
 
 
   Depositar() {

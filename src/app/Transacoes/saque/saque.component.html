@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <form [formGroup]="saqueForm" (ngSubmit)="Saque()">
-        <label>Ponha o valor pra fazer o deposito</label>
-        <input style="text-align: start; height: 30px; width: 200px;" [textMack]="{mask:numberMask }" class="form-control" formControlName="valor" type="text">
+        <label>Ponha o valor pra fazer o saque</label>
+        <input style="text-align: start; height: 30px; width: 200px;" [textMask]="{mask: mascaraCod}" class="form-control" formControlName="valor" type="text">
     </form>
     <button type="submit">Saque</button>
 </div>
